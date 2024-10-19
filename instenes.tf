@@ -8,7 +8,7 @@ resource "alicloud_instance" "web" {
   system_disk_category       = "cloud_essd"
   system_disk_size           = 40
   image_id                   = "ubuntu_24_04_x64_20G_alibase_20240812.vhd"
-  instance_name              = "lab2_web"
+  instance_name              = "nginx"
   vswitch_id                 = alicloud_vswitch.public.id
   internet_max_bandwidth_out = 100
   internet_charge_type       = "PayByTraffic"
@@ -17,6 +17,6 @@ resource "alicloud_instance" "web" {
   user_data                  = base64encode(file("nginx.sh"))
 }
 
-output "instance_ip_addr" {
+output "web_ip_nginx" {
   value = alicloud_instance.web.public_ip
 }
